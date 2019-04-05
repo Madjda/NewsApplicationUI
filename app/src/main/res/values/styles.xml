@@ -10,6 +10,7 @@
         <item name="primary_text_color">#000</item>
         <item name="secondary_text_color">#808080</item>
         <item name="tint_color">#424547</item>
+        <item name="icon_color">#000</item>
     </style>
 
     <!-- Base application Dark theme / Mode night -->
@@ -22,6 +23,7 @@
         <item name="primary_text_color">#fff</item>
         <item name="secondary_text_color">#fcfcfc</item>
         <item name="tint_color">#fff</item>
+        <item name="icon_color">#fff</item>
 
     </style>
 

@@ -6,20 +6,15 @@ import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatDelegate
 import android.util.Log
 import android.view.MenuItem
+import com.example.tdm_project.sharedPreferences.CustomBaseActivity
 
 val TAG = "TAG-MainActivity"
-class MainActivity : AppCompatActivity() {
+class MainActivity : CustomBaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setUpBottomNavigationBar()
-
-        if (AppCompatDelegate.getDefaultNightMode()== AppCompatDelegate.MODE_NIGHT_YES){
-            setTheme(R.style.DarkAppTheme)
-        }else{
-            setTheme(R.style.AppTheme)
-        }
 
 
     }
