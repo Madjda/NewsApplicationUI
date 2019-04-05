@@ -3,6 +3,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.Fragment
+import android.support.v7.widget.Toolbar;
 import android.util.Log
 import android.view.MenuItem
 
@@ -12,8 +13,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-       // setSupportActionBar(findViewById(R.id.TopToolbar))
-
+        var toolbar = findViewById(R.id.TopToolbar) as Toolbar
+        setSupportActionBar(toolbar)
+        setUpBottomNavigationBar()
     }
 
     // Sending the token to the fragement
@@ -29,7 +31,7 @@ class MainActivity : AppCompatActivity() {
                         R.id.nav_saved-> fragment = SavedFragment.getInstance()
                         else -> fragment = HomeFragment.getInstance()
                     }
-
+                    replaceFragment(fragment)
                     return true
                 }
             })

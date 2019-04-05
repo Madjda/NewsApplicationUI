@@ -21,7 +21,7 @@ class SavedFragment : Fragment() {
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val rootView = inflater.inflate(R.layout.profile_fragment, container, false)
+        val rootView = inflater.inflate(R.layout.saved_fragment, container, false)
 
 
 
