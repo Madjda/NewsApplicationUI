@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.LinearLayoutCompat
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+>
+    <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="55dp"
+            android:background="?attr/background_color"
+
+    >
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+        >
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Adjust parameters"
+                android:textColor="?attr/primary_text_color"
+                android:textSize="22sp"
+                android:padding="10dp"
+        />
+        <RadioButton
+                android:layout_width="wrap_content"
+                android:buttonTint="?attr/tint_color"
+                android:text="button"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+            android:background="?attr/background_color"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+            <Switch
+                    android:id="@+id/mode_switcher"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="?attr/primary_text_color"
+                    android:text="switch to another mode  "
+                    android:buttonTint="?attr/tint_color"
+            />
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+</android.support.v7.widget.LinearLayoutCompat>
