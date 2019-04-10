@@ -1,10 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+                                             xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
+              android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <android.support.design.widget.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:id="@+id/param"
+            android:layout_margin="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
 
-
+                                                        android:layout_height="wrap_content"/>
+    <android.support.v7.widget.CardView
+            app:cardBackgroundColor="?attr/card_background"
+            app:layout_constraintLeft_toRightOf="parent"
+            app:layout_constraintVertical_chainStyle="packed"
+            android:layout_width="match_parent"
+            app:layout_constraintEnd_toEndOf="@id/param"
+            app:layout_constraintEnd_toStartOf="@id/param"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_height="wrap_content" tools:ignore="MissingConstraints">
+        <android.support.v7.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:text="rtrytgyjhkkkkkkkkjtuhgh"
+                android:layout_margin="48dp"
+                                                     android:layout_height="wrap_content"
+        />
+    </android.support.v7.widget.CardView>
 </android.support.constraint.ConstraintLayout>
