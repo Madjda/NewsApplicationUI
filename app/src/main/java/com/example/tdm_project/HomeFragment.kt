@@ -8,18 +8,26 @@ import android.content.DialogInterface
 import android.content.res.Configuration
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
+import com.example.tdm_project.adapters.horizCardAdapter
+import com.example.tdm_project.adapters.vertCardAdapter
+import com.example.tdm_project.data.getList
+import com.example.tdm_project.data.news
 import java.util.*
+import kotlin.collections.ArrayList
 
 
 class HomeFragment : Fragment() {
 
+    lateinit var rootView : View
+    lateinit var customHAdapter : horizCardAdapter
+    lateinit var customVAdapter : vertCardAdapter
+    var newsList = ArrayList<news>()
 
 
 
@@ -28,22 +36,50 @@ class HomeFragment : Fragment() {
     }
 
 
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val rootView = inflater.inflate(R.layout.home_fragment, container, false)
+        //set the view
+        rootView = inflater.inflate(R.layout.home_fragment, container, false)
+
+        newsList = getList()
 
 
-         var  btnChange= rootView.findViewById<Button>(R.id.btn_changeLang)
-
+        var  btnChange= rootView.findViewById<Button>(R.id.btn_changeLang)
         btnChange.setOnClickListener {
-
             showChangeLanguageDialog()
-
         }
 
+        var btnHoriz = rootView.findViewById<ImageButton>(R.id.btn_horizt_display)
+        btnHoriz.setOnClickListener{
+            intialiserHorizontally()
+        }
 
+        var btnVert = rootView.findViewById<ImageButton>(R.id.btn_vert_display)
+        btnVert.setOnClickListener{
+            intialiserVertically()
+        }
 
         return rootView
     }
+
+    private fun intialiserVertically() {
+        val rv = rootView.findViewById<RecyclerView>(R.id.recyler_view_news)
+        val layout = LinearLayoutManager(rootView.context)
+        layout.orientation = LinearLayoutManager.VERTICAL
+        rv.layoutManager = layout
+        customVAdapter = vertCardAdapter(rootView.context,newsList)
+        rv.adapter = customVAdapter
+    }
+
+    private fun intialiserHorizontally() {
+        val rv = rootView.findViewById<RecyclerView>(R.id.recyler_view_news)
+        val layout = LinearLayoutManager(rootView.context)
+        layout.orientation = LinearLayoutManager.HORIZONTAL
+        rv.layoutManager = layout
+        customHAdapter = horizCardAdapter(rootView.context,newsList)
+        rv.adapter = customHAdapter
+    }
+
 
     private fun showChangeLanguageDialog () {
 

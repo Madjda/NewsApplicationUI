@@ -2,7 +2,7 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="match_parent" android:background="?attr/background_color"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
@@ -25,7 +25,40 @@
             android:layout_height="wrap_content"
             android:text="@string/chang_lang"
             app:layout_constraintHorizontal_bias="1.0"/>
+    <ImageButton
+            app:layout_constraintTop_toBottomOf="@id/btn_changeLang"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:src="@drawable/ic_view_day_black_24dp"
+            android:id="@+id/btn_vert_display"
+            android:tint="?attr/icon_color"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    <ImageButton
+            app:layout_constraintTop_toBottomOf="@id/btn_changeLang"
+            app:layout_constraintEnd_toStartOf="@id/btn_vert_display"
+            android:src="@drawable/ic_view_week_black_24dp"
+            android:id="@+id/btn_horizt_display"
+            android:layout_width="wrap_content"
+            android:tint="?attr/icon_color"
+            android:layout_height="wrap_content"/>
 
+    <android.support.v7.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_vert_display"
+            android:orientation="vertical">
+
+        <android.support.v7.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/recyler_view_news"
+        >
+
+        </android.support.v7.widget.RecyclerView>
+
+
+    </android.support.v7.widget.LinearLayoutCompat>
 
 
 
