@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment
 import android.support.v7.widget.Toolbar;
 import android.support.v7.app.AppCompatDelegate
 import android.util.Log
+import android.view.Menu
 import android.view.MenuItem
 import com.example.tdm_project.sharedPreferences.CustomBaseActivity
 
@@ -20,6 +21,11 @@ class MainActivity : CustomBaseActivity() {
         setUpBottomNavigationBar()
 
 
+    }
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.menu_top_toolbar, menu)
+
+        return true
     }
     private fun SetFagment(fragment: Fragment?):Boolean{
         if(fragment != null){
