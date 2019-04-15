@@ -2,4 +2,6 @@
     <string name="app_name">TDM_Project</string>
     <string name="welcome">Bienvenue</string>
     <string name="chang_lang">changer la langue </string>
+    <string name="welcome_user">Bienvenue, Mlle Fatima ! </string>
+    <string name="topic">Topics</string>
 </resources>

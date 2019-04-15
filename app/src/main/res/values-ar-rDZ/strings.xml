@@ -3,4 +3,7 @@
     <string name="app_name">TDM_Project</string>
     <string name="welcome">مرحبا</string>
     <string name="chang_lang"> تغيير اللغة </string>
+    <string name="welcome_user">أهلا بعودتك أنسة فاطمة.</string>
+    <string name="topic">مواضيع اليوم</string>
+
 </resources>

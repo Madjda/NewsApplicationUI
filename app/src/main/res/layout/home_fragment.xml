@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
+<android.support.design.circularreveal.coordinatorlayout.CircularRevealCoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+<android.support.v4.widget.NestedScrollView android:layout_width="match_parent"
+                                            android:layout_height="match_parent">
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -25,8 +31,45 @@
             android:layout_height="wrap_content"
             android:text="@string/chang_lang"
             app:layout_constraintHorizontal_bias="1.0"/>
-    <ImageButton
+
+    <android.support.v7.widget.AppCompatTextView
             app:layout_constraintTop_toBottomOf="@id/btn_changeLang"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="@string/welcome_user"
+            android:id="@+id/user_greeting"
+            android:textColor="?attr/secondary_text_color"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    <android.support.v7.widget.AppCompatTextView
+            app:layout_constraintTop_toBottomOf="@id/user_greeting"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="@string/topic"
+            android:layout_marginTop="5dp"
+            android:textColor="?attr/primary_text_color"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:id="@+id/topics_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+<HorizontalScrollView
+        android:layout_width="wrap_content"
+        android:id="@+id/scroller"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/topics_title"
+        android:layout_height="wrap_content">
+
+    <android.support.v7.widget.LinearLayoutCompat
+            android:minWidth="450dp"
+            android:layout_width="wrap_content"
+            android:id="@+id/Topics_buttom_holder"
+            android:layout_marginBottom="5dp"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+
+    </android.support.v7.widget.LinearLayoutCompat>
+</HorizontalScrollView>
+    <ImageButton
+            app:layout_constraintTop_toBottomOf="@id/scroller"
             app:layout_constraintEnd_toEndOf="parent"
             android:src="@drawable/ic_view_day_black_24dp"
             android:id="@+id/btn_vert_display"
@@ -34,7 +77,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
     <ImageButton
-            app:layout_constraintTop_toBottomOf="@id/btn_changeLang"
+            app:layout_constraintTop_toBottomOf="@id/scroller"
             app:layout_constraintEnd_toStartOf="@id/btn_vert_display"
             android:src="@drawable/ic_view_week_black_24dp"
             android:id="@+id/btn_horizt_display"
@@ -57,9 +100,8 @@
 
         </android.support.v7.widget.RecyclerView>
 
-
     </android.support.v7.widget.LinearLayoutCompat>
 
-
-
 </android.support.constraint.ConstraintLayout>
+</android.support.v4.widget.NestedScrollView>
+</android.support.design.circularreveal.coordinatorlayout.CircularRevealCoordinatorLayout>
