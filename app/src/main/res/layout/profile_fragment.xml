@@ -5,28 +5,46 @@
               android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <android.support.design.widget.FloatingActionButton
-            android:layout_width="wrap_content"
+    <Button android:layout_width="41dp"
+            android:layout_height="38dp"
             android:id="@+id/param"
-            android:layout_margin="15dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="@drawable/ic_settings_black_24dp"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            tools:layout_editor_absoluteY="6dp"
+            android:layout_marginEnd="4dp"/>
 
-                                                        android:layout_height="wrap_content"/>
-    <android.support.v7.widget.CardView
-            app:cardBackgroundColor="?attr/card_background"
-            app:layout_constraintLeft_toRightOf="parent"
-            app:layout_constraintVertical_chainStyle="packed"
+    <ImageView android:layout_width="153dp"
+               android:layout_height="127dp"
+               android:id="@+id/profile_photo"
+               android:src="@drawable/ic_person_black_24dp"
+               app:layout_constraintTop_toTopOf="parent"
+               app:layout_constraintStart_toStartOf="parent"
+               app:layout_constraintEnd_toEndOf="parent"
+               tools:layout_editor_absoluteY="34dp"
+    />
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/profile_pseudo"
+            android:textSize="20dp"
+            android:text="Madjda Zerrouk "
+            app:layout_constraintTop_toBottomOf="@id/profile_photo"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="132dp"/>
+
+<!--
+    <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"
-            app:layout_constraintEnd_toEndOf="@id/param"
-            app:layout_constraintEnd_toStartOf="@id/param"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_height="wrap_content" tools:ignore="MissingConstraints">
-        <android.support.v7.widget.AppCompatTextView
-                android:layout_width="match_parent"
-                android:text="rtrytgyjhkkkkkkkkjtuhgh"
-                android:layout_margin="48dp"
-                                                     android:layout_height="wrap_content"
-        />
-    </android.support.v7.widget.CardView>
+            android:layout_height="wrap_content"
+            android:id="@+id/recyler_view_sahred_post"
+            app:layout_constraintTop_toBottomOf="@id/profile_pseudo"
+            app:layout_constraintStart_toEndOf="@id/profile_pseudo"
+            android:layout_marginTop="24dp">
+
+    </android.support.v7.widget.RecyclerView>
+-->
+
+
 </android.support.constraint.ConstraintLayout>

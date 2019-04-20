@@ -1,4 +1,5 @@
 package com.example.tdm_project
+import android.content.Context
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
@@ -8,7 +9,9 @@ import android.support.v7.app.AppCompatDelegate
 import android.util.Log
 import android.view.MenuItem
 import com.example.tdm_project.sharedPreferences.CustomBaseActivity
-
+import com.example.tdm_project.sharedPreferences.MyContextWrapper
+import com.example.tdm_project.sharedPreferences.preferencesProvider
+lateinit var myPreference: preferencesProvider
 val TAG = "TAG-MainActivity"
 class MainActivity : CustomBaseActivity() {
 
@@ -61,6 +64,10 @@ class MainActivity : CustomBaseActivity() {
     }
 
 
-
+    override fun attachBaseContext(newBase: Context?) {
+        myPreference = preferencesProvider(newBase!!)
+        val lang = myPreference.getLoginCount()
+        super.attachBaseContext(MyContextWrapper.wrap(newBase,lang))
+    }
 
 }

@@ -17,6 +17,31 @@
         </activity>
         <activity android:name=".ParameterActivity"/>
         <activity android:name=".sharedPreferences.CustomBaseActivity"/>
+
+        <provider android:authorities="com.example.tdm_project.fileProvider"
+                  android:name="android.support.v4.content.FileProvider"
+                  android:exported="false"
+                  android:grantUriPermissions="true"
+        >
+            <meta-data android:name="android.support.FILE_PROVIDER_PATHS"
+                       android:resource="@xml/file_paths">
+            </meta-data>
+
+
+        </provider>
+
     </application>
 
+
+
+    <uses-feature android:name="android.hardware.camera2"
+                  android:required="true" />
+    <uses-feature
+            android:name="android.hardware.camera.any"
+            android:required="true" />
+    <uses-feature
+            android:name="android.hardware.camera.autofocus"
+            android:required="false" />
+    <!--<uses-permission android:name="android.permission.CAMERA"/>-->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 </manifest>

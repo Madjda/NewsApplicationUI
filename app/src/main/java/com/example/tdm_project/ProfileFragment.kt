@@ -12,10 +12,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.CompoundButton
-import android.widget.ImageView
-import android.widget.Switch
-import android.widget.TextView
+import android.widget.*
 
 
 class ProfileFragment : Fragment() {
@@ -32,7 +29,7 @@ class ProfileFragment : Fragment() {
         val rootView = inflater.inflate(R.layout.profile_fragment,
                        container,
             false)
-          rootView.findViewById<FloatingActionButton>(R.id.param).setOnClickListener {
+          rootView.findViewById<Button>(R.id.param).setOnClickListener {
               // preparé l'activité d'ajout
               val intent = Intent(rootView.context, ParameterActivity::class.java)
               // lancer l'activité

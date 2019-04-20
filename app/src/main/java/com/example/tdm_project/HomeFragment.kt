@@ -21,19 +21,17 @@ import android.text.Layout
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.widget.*
 import com.example.tdm_project.adapters.horizCardAdapter
 import com.example.tdm_project.adapters.vertCardAdapter
 import com.example.tdm_project.data.Topic
 import com.example.tdm_project.data.getList
 import com.example.tdm_project.data.news
-import java.util.*
 import kotlin.collections.ArrayList
 
 
-class HomeFragment : Fragment() {
 
+class HomeFragment : Fragment() {
     lateinit var rootView : View
     lateinit var customHAdapter : horizCardAdapter
     lateinit var customVAdapter : vertCardAdapter
@@ -57,10 +55,7 @@ class HomeFragment : Fragment() {
         newsList = getList()
 
 
-        var  btnChange= rootView.findViewById<Button>(R.id.btn_changeLang)
-        btnChange.setOnClickListener {
-            showChangeLanguageDialog()
-        }
+
 
         var btnHoriz = rootView.findViewById<ImageButton>(R.id.btn_horizt_display)
         btnHoriz.setOnClickListener{
@@ -84,7 +79,8 @@ class HomeFragment : Fragment() {
         rv.adapter = customVAdapter
     }
 
-    private fun intialiserHorizontally() {
+    private fun intialiserHorizontally()
+    {
         val rv = rootView.findViewById<RecyclerView>(R.id.recyler_view_news)
         val layout = LinearLayoutManager(rootView.context)
         layout.orientation = LinearLayoutManager.HORIZONTAL
@@ -94,55 +90,7 @@ class HomeFragment : Fragment() {
     }
 
 
-    private fun showChangeLanguageDialog () {
 
-        var languagesList= arrayOf("Français","العربية")
-        var mBuilder = AlertDialog.Builder(context)
-        mBuilder.setTitle("Changer La Langue")
-        mBuilder.setSingleChoiceItems( languagesList,-1) { dialog , i: Int ->
-
-       if (i==0) {
-           setLocal("fr")
-           activity!!.recreate()
-       }
-       else
-       {
-           setLocal("ar")
-           activity!!.recreate()
-       }
-
-     dialog.dismiss()
-
-        }
-
-        mBuilder.setNeutralButton("Annuler") { dialog, which: Int ->
-            dialog.dismiss()
-
-
-        }
-
-      var mDialog = mBuilder.create()
-        mDialog.show()
-
-
-    }
-
-    private fun setLocal(lang: String) {
-        var locale = Locale(lang)
-        Locale.setDefault(locale)
-        var config = Configuration()
-        config.locale =locale
-        activity!!.baseContext.resources.updateConfiguration(config,activity!!.baseContext.resources.displayMetrics)
-        val editor = activity!!.getSharedPreferences("Settings", Context.MODE_PRIVATE).edit()
-        editor.putString("My_Lang", lang)
-        editor.apply()
-
-    }
-    private fun loadLocate() {
-        val sharedPreferences = activity!!.getSharedPreferences("Settings", Activity.MODE_PRIVATE)
-        val language = sharedPreferences.getString("My_Lang", "")
-        setLocal(language)
-    }
 
     @SuppressLint("NewApi")
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
@@ -178,4 +126,5 @@ class HomeFragment : Fragment() {
             layout.addView(btn)
 }
 }
+
 }
