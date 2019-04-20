@@ -170,7 +170,7 @@ class ParameterActivity : CustomBaseActivity() {
         val index = languagesList.indexOf(lang)
         var mBuilder = AlertDialog.Builder(this)
         mBuilder.setTitle("Changer La Langue")
-        mBuilder.setSingleChoiceItems( languagesList,0) { dialog , i: Int ->
+        mBuilder.setSingleChoiceItems( languagesList,-1) { dialog , i: Int ->
 
             if (i==0) {
                 pref.setLoginCount("fr")

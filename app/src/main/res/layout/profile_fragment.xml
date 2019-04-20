@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                             xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-              android:orientation="vertical"
+<android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="?attr/background_color"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <Button android:layout_width="41dp"
@@ -29,6 +31,7 @@
             android:id="@+id/profile_pseudo"
             android:textSize="20dp"
             android:text="Madjda Zerrouk "
+            android:textColor="?attr/primary_text_color"
             app:layout_constraintTop_toBottomOf="@id/profile_photo"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="8dp"

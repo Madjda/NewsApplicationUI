@@ -62,7 +62,9 @@
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:background="?attr/card_background"
+        >
             <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -76,7 +78,7 @@
                   android:id="@+id/btn_edit_pic"
                   android:text="   changer la photo"
                   android:drawableLeft="@drawable/ic_picture"
-                  android:background="@color/white"
+                  android:background="?attr/card_background"
 
                   />
             <Button android:layout_width="wrap_content"
@@ -84,7 +86,7 @@
                     android:id="@+id/btn_edit_pseudo"
                     android:text="   changer le pseudo "
                     android:drawableLeft="@drawable/ic_edit_black_24dp"
-                    android:background="@color/white"
+                    android:background="?attr/card_background"
 
 
           />
@@ -103,7 +105,9 @@
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:background="?attr/card_background"
+        >
             <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -121,7 +125,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="  Changer la langue"
-                    android:background="@color/white"
+                    android:background="?attr/card_background"
                     app:layout_constraintHorizontal_bias="1.0"
                     android:drawableLeft="@drawable/ic_language"
             />
@@ -137,7 +141,9 @@
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:background="?attr/card_background"
+        >
             <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
