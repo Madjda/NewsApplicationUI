@@ -54,16 +54,10 @@ class ParameterActivity : CustomBaseActivity() {
 
 
 
-        /* if (pref.load() == "dark"){
-            setTheme(R.style.DarkAppTheme)
-        }else{
-            setTheme(R.style.AppTheme)
-        }
-*/      ///// PopUp Picture
+      ///// PopUp Picture
 
 
         setContentView(R.layout.parameters)
-        imageView = this.findViewById<ImageView>(R.id.image)
         btnEditPhoto = this.findViewById<View>(R.id.btn_edit_pic) as Button
         modeSwitch = this.findViewById(R.id.mode_switcher)
         btnEditPseudo = this.findViewById(R.id.btn_edit_pseudo)
@@ -285,7 +279,6 @@ class ParameterActivity : CustomBaseActivity() {
         {
           val file = File(currentPath)
            uri = Uri.fromFile(file)
-            imageView.setImageURI(uri)
         }catch ( e: IOException)
         {
             e.printStackTrace()
@@ -297,7 +290,6 @@ class ParameterActivity : CustomBaseActivity() {
         { try
         {
             uri = data!!.data
-            imageView.setImageURI(uri)
         }catch ( e: IOException)
         {
             e.printStackTrace()
