@@ -25,6 +25,7 @@
             android:id="@+id/news_image"
     />
      <android.support.v7.widget.AppCompatImageButton
+             android:id="@+id/btn_share"
              android:layout_gravity="end|top"
              android:layout_alignBaseline="@+id/news_image"
              android:layout_alignEnd="@+id/news_image"

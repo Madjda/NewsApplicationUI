@@ -15,8 +15,10 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".ParameterActivity"/>
-        <activity android:name=".sharedPreferences.CustomBaseActivity"/>
+        <activity android:name=".ParameterActivity"
+                  android:windowSoftInputMode="adjustResize"
+        />
+
 
         <provider android:authorities="com.example.tdm_project.fileProvider"
                   android:name="android.support.v4.content.FileProvider"

@@ -7,6 +7,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.res.Configuration
+import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -24,6 +25,7 @@ import android.widget.*
 import com.example.tdm_project.sharedPreferences.CustomBaseActivity
 import com.example.tdm_project.sharedPreferences.preferencesProvider
 import kotlinx.android.synthetic.main.parameters.*
+import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.IOException
 import java.text.SimpleDateFormat
@@ -37,7 +39,10 @@ class ParameterActivity : CustomBaseActivity() {
     lateinit var btnEditPhoto : Button
     lateinit var btnChange : Button
     lateinit var imageView : ImageView
+    lateinit var btnEditPseudo : Button
     var currentPath : String? = null
+    var pseudo : String? = null
+
 
 
     @RequiresApi(Build.VERSION_CODES.KITKAT)
@@ -61,7 +66,7 @@ class ParameterActivity : CustomBaseActivity() {
         imageView = this.findViewById<ImageView>(R.id.image)
         btnEditPhoto = this.findViewById<View>(R.id.btn_edit_pic) as Button
         modeSwitch = this.findViewById(R.id.mode_switcher)
-
+        btnEditPseudo = this.findViewById(R.id.btn_edit_pseudo)
 
         //just to be current to the shared preferences theme
         if (pref.load() == "dark") {
@@ -94,7 +99,7 @@ class ParameterActivity : CustomBaseActivity() {
         btnChange.setOnClickListener {
             showChangeLanguageDialog()
         }
-
+//Photo Edition
 
         btnEditPhoto.setOnClickListener{
             val inflater:LayoutInflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
@@ -159,7 +164,72 @@ class ParameterActivity : CustomBaseActivity() {
         }
 
 
+
+     // PopUp Editing Pseudo
+        btnEditPseudo.setOnClickListener{
+            val inflater:LayoutInflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+
+            // Inflate a custom view using layout inflater
+            val view = inflater.inflate(R.layout.pop_up_pseudo,null)
+
+            // Initialize a new instance of popup window
+            val popupWindow = PopupWindow(
+                view, // Custom view to show in popup window
+                LinearLayout.LayoutParams.WRAP_CONTENT, // Width of popup window
+                LinearLayout.LayoutParams.WRAP_CONTENT // Window height
+            )
+
+            // Set an elevation for the popup window
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                popupWindow.elevation = 10.0F
+            }
+
+
+            // If API level 23 or higher then execute the code
+            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+                // Create a new slide animation for popup window enter transition
+                val slideIn = Slide()
+                slideIn.slideEdge = Gravity.TOP
+                popupWindow.enterTransition = slideIn
+
+                // Slide animation for popup window exit transition
+                val slideOut = Slide()
+                slideOut.slideEdge = Gravity.RIGHT
+                popupWindow.exitTransition = slideOut
+                popupWindow.setFocusable(true)
+                popupWindow.update()
+            }
+
+
+            // Get the widgets reference from custom view
+            var newPseudo = view.findViewById<EditText>(R.id.new_pseudo)
+            var confirmBtn = view.findViewById<Button>(R.id.btn_confirm)
+
+
+            confirmBtn.setOnClickListener {
+
+                pseudo= newPseudo.text.toString()
+                Toast.makeText(this,pseudo,Toast.LENGTH_SHORT).show()
+                val pseudoIntent = Intent (this,MainActivity ::class.java)
+                pseudoIntent.putExtra("PSEUDO",pseudo)
+                startActivity(pseudoIntent)
+            }
+
+
+            // Finally, show the popup window on app
+            TransitionManager.beginDelayedTransition(root_layout)
+            popupWindow.showAtLocation(
+                root_layout, // Location to display popup window
+                Gravity.CENTER_HORIZONTAL, // Exact position of layout to display popup
+                0, // X offset
+                0 // Y offset
+            )
+        }
+
+
     }
+
+
 
     /////Language
 
@@ -209,11 +279,12 @@ class ParameterActivity : CustomBaseActivity() {
     //Changing Profile Picture
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        var uri : Uri?= null
     if (requestCode == TAKE_PICTURE && resultCode == Activity.RESULT_OK )
         { try
         {
           val file = File(currentPath)
-          val uri = Uri.fromFile(file)
+           uri = Uri.fromFile(file)
             imageView.setImageURI(uri)
         }catch ( e: IOException)
         {
@@ -225,7 +296,7 @@ class ParameterActivity : CustomBaseActivity() {
         if (requestCode == SELECT_PICTURE && resultCode == Activity.RESULT_OK )
         { try
         {
-         val uri = data!!.data
+            uri = data!!.data
             imageView.setImageURI(uri)
         }catch ( e: IOException)
         {
@@ -234,6 +305,11 @@ class ParameterActivity : CustomBaseActivity() {
 
         }
 
+
+        var stringUri = uri.toString()
+        val pictureIntent = Intent (this,MainActivity ::class.java)
+        pictureIntent.putExtra("PHOTO",stringUri)
+        startActivity(pictureIntent)
 
 
     }
