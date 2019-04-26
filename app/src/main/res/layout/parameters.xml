@@ -5,9 +5,19 @@
         android:layout_height="match_parent"
         xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
         android:orientation="vertical"
+        android:id="@+id/root_layout"
         android:background="?attr/background_color"
         tools:context=".ParameterActivity"
 >
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Paramètres"
+            android:textColor="?attr/primary_text_color"
+            android:textSize="25sp"
+            android:padding="10dp"
+    />
+
     <android.support.v7.widget.CardView
             android:layout_margin="7dp"
             android:layout_width="match_parent"
@@ -18,23 +28,71 @@
 
     >
         <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
         >
-        <TextView
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Mode"
+            android:textColor="?attr/primary_text_color"
+            android:textSize="22sp"
+            android:padding="10dp"
+    />
+            <Switch
+                    android:id="@+id/mode_switcher"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="?attr/primary_text_color"
+                    android:text="    Mode nuit  "
+                    android:buttonTint="?attr/tint_color"
+                    android:drawableStart="@drawable/ic_nightmode"
+            />
+
+</LinearLayout>
+
+</android.support.v7.widget.CardView>
+    <android.support.v7.widget.CardView
+            android:background="?attr/background_color"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Adjust parameters"
-                android:textColor="?attr/primary_text_color"
-                android:textSize="22sp"
-                android:padding="10dp"
-        />
-        <RadioButton
-                android:layout_width="wrap_content"
-                android:buttonTint="?attr/tint_color"
-                android:text="button"
-                android:layout_height="wrap_content"/>
+                android:orientation="vertical"
+                android:background="?attr/card_background"
+        >
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Profile"
+                    android:textColor="?attr/primary_text_color"
+                    android:textSize="20sp"
+                    android:padding="10dp"
+            />
+          <Button android:layout_width="wrap_content"
+                  android:layout_height="match_parent"
+                  android:id="@+id/btn_edit_pic"
+                  android:text="   changer la photo"
+                  android:drawableLeft="@drawable/ic_picture"
+                  android:background="?attr/card_background"
+
+                  />
+            <Button android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/btn_edit_pseudo"
+                    android:text="   changer le pseudo "
+                    android:drawableLeft="@drawable/ic_edit_black_24dp"
+                    android:background="?attr/card_background"
+
+
+          />
+
+
+
         </LinearLayout>
     </android.support.v7.widget.CardView>
 
@@ -43,18 +101,58 @@
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
-            <Switch
-                    android:id="@+id/mode_switcher"
+                android:orientation="vertical"
+                android:background="?attr/card_background"
+        >
+            <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:text="Langues"
                     android:textColor="?attr/primary_text_color"
-                    android:text="switch to another mode  "
-                    android:buttonTint="?attr/tint_color"
+                    android:textSize="20sp"
+                    android:padding="10dp"
             />
+            <Button
+                    android:id="@+id/btn_changeLang"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/tv_welcome"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_welcome"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="  Changer la langue"
+                    android:background="?attr/card_background"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    android:drawableLeft="@drawable/ic_language"
+            />
+
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+    <android.support.v7.widget.CardView
+            android:background="?attr/background_color"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="?attr/card_background"
+        >
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Topics"
+                    android:textColor="?attr/primary_text_color"
+                    android:textSize="20sp"
+                    android:padding="10dp"
+            />
+
         </LinearLayout>
     </android.support.v7.widget.CardView>
     <android.support.v7.widget.CardView

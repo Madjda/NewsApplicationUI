@@ -28,12 +28,15 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 
+
+
+
 class HomeFragment : Fragment() {
-    lateinit var pref : PreferencesProvider
     lateinit var rootView : View
     lateinit var customHAdapter : horizCardAdapter
     lateinit var customVAdapter : vertCardAdapter
     lateinit var rv : RecyclerView
+    lateinit var pref : PreferencesProvider
 
     var newsList = ArrayList<news>()
     var selectedList = ArrayList<news>()
@@ -64,10 +67,8 @@ class HomeFragment : Fragment() {
         intialiserHorizontally()
 
 
-        val  btnChange= rootView.findViewById<Button>(R.id.btn_changeLang)
-        btnChange.setOnClickListener {
-            showChangeLanguageDialog()
-        }
+
+
 
 
         val btnHoriz = rootView.findViewById<ImageButton>(R.id.btn_horizt_display)
@@ -105,6 +106,7 @@ class HomeFragment : Fragment() {
 
     private fun intialiserHorizontally() {
         rv = rootView.findViewById<RecyclerView>(R.id.recyler_view_news)
+
         val layout = LinearLayoutManager(rootView.context)
         layout.orientation = LinearLayoutManager.HORIZONTAL
         rv.layoutManager = layout
@@ -113,55 +115,8 @@ class HomeFragment : Fragment() {
     }
 
 
-    private fun showChangeLanguageDialog () {
-
-        val languagesList= arrayOf("Français","العربية")
-        val mBuilder = AlertDialog.Builder(context)
-        mBuilder.setTitle("Changer La Langue")
-        mBuilder.setSingleChoiceItems( languagesList,-1) { dialog , i: Int ->
-
-       if (i==0) {
-           setLocal("fr")
-           activity!!.recreate()
-       }
-       else
-       {
-           setLocal("ar")
-           activity!!.recreate()
-       }
-
-     dialog.dismiss()
-
-        }
-
-        mBuilder.setNeutralButton("Annuler") { dialog, which: Int ->
-            dialog.dismiss()
 
 
-        }
-
-      var mDialog = mBuilder.create()
-        mDialog.show()
-
-
-    }
-
-    private fun setLocal(lang: String) {
-        var locale = Locale(lang)
-        Locale.setDefault(locale)
-        var config = Configuration()
-        config.locale =locale
-        activity!!.baseContext.resources.updateConfiguration(config,activity!!.baseContext.resources.displayMetrics)
-        val editor = activity!!.getSharedPreferences("Settings", Context.MODE_PRIVATE).edit()
-        editor.putString("My_Lang", lang)
-        editor.apply()
-
-    }
-    private fun loadLocate() {
-        val sharedPreferences = activity!!.getSharedPreferences("Settings", Activity.MODE_PRIVATE)
-        val language = sharedPreferences.getString("My_Lang", "")
-        setLocal(language)
-    }
 
 
     @SuppressLint("NewApi")
@@ -221,4 +176,5 @@ class HomeFragment : Fragment() {
             2-> customVAdapter.updateList(myNewList)
         }
     }
+
 }

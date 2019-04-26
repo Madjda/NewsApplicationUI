@@ -5,5 +5,5 @@
     <string name="welcome_user">Bienvenue, Mlle Fatima !</string>
     <string name="topic">Topics</string>
     <string name="search_title">Trouvez un article</string>
-    <string name="title_activity_article_reading">ArticleReadingActivity</string>
+    <string name="title_activity_article_reading" translatable="false">ArticleReadingActivity</string>
 </resources>
