@@ -67,7 +67,6 @@ class ParameterActivity : CustomBaseActivity() {
 
 
         setContentView(R.layout.parameters)
-        imageView = this.findViewById<ImageView>(R.id.image)
         btnEditPhoto = this.findViewById<View>(R.id.btn_edit_pic) as Button
         modeSwitch = this.findViewById(R.id.mode_switcher)
         btnEditPseudo = this.findViewById(R.id.btn_edit_pseudo)
