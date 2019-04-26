@@ -1,12 +1,14 @@
 package com.example.tdm_project.adapters
 
 import android.content.Context
+import android.content.Intent
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import com.example.tdm_project.ArticleReadingActivity
 import com.example.tdm_project.R
 import com.example.tdm_project.data.news
 
@@ -24,7 +26,11 @@ class horizCardAdapter(val context: Context , val news : ArrayList<news>) : Recy
         val newsContent = news[p1]
         p0.bind(newsContent)
     }
-
+    fun updateList(newlist: List<news>) {
+        news.clear()
+        news.addAll(newlist)
+        this.notifyDataSetChanged()
+    }
 
     inner class ViewHolder (private val objet: View) : RecyclerView.ViewHolder(objet){
           fun bind(item : news){
@@ -33,6 +39,12 @@ class horizCardAdapter(val context: Context , val news : ArrayList<news>) : Recy
               objet.findViewById<TextView>(R.id.news_descrp).text = item.Second_title
               objet.findViewById<TextView>(R.id.news_writer).text = item.Writer
               objet.findViewById<ImageView>(R.id.news_image)
+
+              val intent = Intent(context, ArticleReadingActivity::class.java)
+              objet.setOnClickListener {
+                  intent.putExtra("article",item)
+                  context.startActivity(intent)
+              }
 
           }
     }

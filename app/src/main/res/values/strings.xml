@@ -1,8 +1,9 @@
 <resources>
     <string name="app_name">TDM_Project</string>
     <string name="welcome">Bienvenue</string>
-    <string name="chang_lang">changer la langue </string>
-    <string name="welcome_user">Bienvenue, Mlle Fatima ! </string>
+    <string name="chang_lang">changer la langue</string>
+    <string name="welcome_user">Bienvenue, Mlle Fatima !</string>
     <string name="topic">Topics</string>
     <string name="search_title">Trouvez un article</string>
+    <string name="title_activity_article_reading">ArticleReadingActivity</string>
 </resources>

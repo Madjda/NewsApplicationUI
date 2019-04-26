@@ -33,8 +33,12 @@ class HomeFragment : Fragment() {
     lateinit var rootView : View
     lateinit var customHAdapter : horizCardAdapter
     lateinit var customVAdapter : vertCardAdapter
+    lateinit var rv : RecyclerView
+
     var newsList = ArrayList<news>()
+    var selectedList = ArrayList<news>()
     var topicsList = ArrayList<Topic>()
+    var choice : Int = 1
 
 
 
@@ -51,8 +55,13 @@ class HomeFragment : Fragment() {
         rootView = inflater.inflate(R.layout.home_fragment, container, false)
         pref = PreferencesProvider(rootView.context)
 
+        //prepare the topics on the top of the fragment
         GetTopics()
+
+
+        //set list of news
         newsList = getList()
+        intialiserHorizontally()
 
 
         val  btnChange= rootView.findViewById<Button>(R.id.btn_changeLang)
@@ -60,21 +69,33 @@ class HomeFragment : Fragment() {
             showChangeLanguageDialog()
         }
 
+
         val btnHoriz = rootView.findViewById<ImageButton>(R.id.btn_horizt_display)
         btnHoriz.setOnClickListener{
             intialiserHorizontally()
+            choice = 1
         }
 
         val btnVert = rootView.findViewById<ImageButton>(R.id.btn_vert_display)
         btnVert.setOnClickListener{
             intialiserVertically()
+            choice = 2
+        }
+
+        val btnAll = rootView.findViewById<AppCompatButton>(R.id.all_topics_btn)
+        btnAll.setOnClickListener {
+            newsList = getList()
+            when(choice){
+                1 -> intialiserHorizontally()
+                2 -> intialiserVertically()
+            }
         }
 
         return rootView
     }
 
     private fun intialiserVertically() {
-        val rv = rootView.findViewById<RecyclerView>(R.id.recyler_view_news)
+        rv = rootView.findViewById<RecyclerView>(R.id.recyler_view_news)
         val layout = LinearLayoutManager(rootView.context)
         layout.orientation = LinearLayoutManager.VERTICAL
         rv.layoutManager = layout
@@ -83,7 +104,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun intialiserHorizontally() {
-        val rv = rootView.findViewById<RecyclerView>(R.id.recyler_view_news)
+        rv = rootView.findViewById<RecyclerView>(R.id.recyler_view_news)
         val layout = LinearLayoutManager(rootView.context)
         layout.orientation = LinearLayoutManager.HORIZONTAL
         rv.layoutManager = layout
@@ -185,8 +206,19 @@ class HomeFragment : Fragment() {
     }
 
     private fun chargeNews(titre: String?) {
+         selectedList.clear()
+         newsList = getList()
          newsList.forEach {
-             if (it.category != titre) newsList.remove(it)
+             if (it.category == titre) selectedList.add(it)
          }
+         newsList = selectedList
+         updateListTopics(selectedList)
+    }
+
+    private fun updateListTopics(myNewList : ArrayList<news>){
+        when (choice) {
+            1-> customHAdapter.updateList(myNewList)
+            2-> customVAdapter.updateList(myNewList)
+        }
     }
 }

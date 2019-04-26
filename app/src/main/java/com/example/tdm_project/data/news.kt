@@ -1,16 +1,55 @@
 package com.example.tdm_project.data
 
- data class news (
-  var Title : String?,
-  var Writer : String?,
-  var Date : String,
-  var Second_title : String?,
-  var Text : String ,
-  var Image : String?,
-  var category : String
-) {
- }
-   fun getList ( ) : ArrayList<news>{
+import android.os.Parcel
+import android.os.Parcelable
+import com.google.gson.annotations.SerializedName
+
+
+data class news (
+    var Title : String?,
+    var Writer : String?,
+    var Date : String,
+    var Second_title : String?,
+    var Text : String,
+    var Image : String?,
+    var category : String
+) : Parcelable {
+    constructor(parcel: Parcel) : this(
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString()
+    )
+    override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeString(Title)
+        parcel.writeString(Writer)
+        parcel.writeString(Date)
+        parcel.writeString(Second_title)
+        parcel.writeString(Text)
+        parcel.writeString(Image)
+        parcel.writeString(category)
+    }
+
+    override fun describeContents(): Int {
+        return 0
+    }
+
+    companion object CREATOR : Parcelable.Creator<news> {
+        override fun createFromParcel(parcel: Parcel): news {
+            return news(parcel)
+        }
+
+        override fun newArray(size: Int): Array<news?> {
+            return arrayOfNulls(size)
+        }
+    }
+
+}
+
+fun getList ( ) : ArrayList<news>{
        var NewsList = ArrayList<news>()
 
        NewsList.addAll(listOf(news("New President","Amine Blogs","17/03/2019","some new informations concerning this text",

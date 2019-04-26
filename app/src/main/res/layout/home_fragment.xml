@@ -65,7 +65,14 @@
             android:layout_marginBottom="5dp"
             android:orientation="horizontal"
             android:layout_height="wrap_content">
-
+       <android.support.v7.widget.AppCompatButton
+               android:layout_width="wrap_content"
+               android:backgroundTint="?attr/primary_text_color"
+               android:text="All"
+               android:textStyle="bold"
+               android:id="@+id/all_topics_btn"
+               android:textColor="?attr/background_color"
+               android:layout_height="match_parent"/>
     </android.support.v7.widget.LinearLayoutCompat>
 </HorizontalScrollView>
     <ImageButton
