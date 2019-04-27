@@ -6,5 +6,8 @@
     <string name="welcome_user">أهلا بعودتك أنسة فاطمة.</string>
     <string name="topic">مواضيع اليوم</string>
     <string name="search_title">Trouvez un article</string>
-
+    <string name="publish_date">Partagé le : </string>
+    <string name="save">Enregistrer</string>
+    <string name="share_social">Partager sur</string>
+    <string name="share_profile">Partager</string>
 </resources>

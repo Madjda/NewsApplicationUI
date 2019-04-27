@@ -45,7 +45,7 @@ class ParameterActivity : CustomBaseActivity() {
     lateinit var btnEditPseudo : Button
     var currentPath : String? = null
     var pseudo : String? = null
-    var topics = ArrayList<Topic>()
+    var topics : ArrayList<Topic>? = null
 
 
 
@@ -57,11 +57,6 @@ class ParameterActivity : CustomBaseActivity() {
 
         //get the view
         setContentView(R.layout.parameters)
-
-
-
-        pref = PreferencesProvider(this)
-
 
 
 
@@ -241,17 +236,17 @@ class ParameterActivity : CustomBaseActivity() {
      list.forEach {
           val check = CheckBox(this)
           check.text = it.title
-          if (topics.contains(it)){
+          if (topics!!.contains(it)){
               check.isChecked = true
           }
           check.setOnClickListener { v ->
               val checked = (v as CheckBox).isChecked
               if (checked) {
-                  topics.add(it)
-                  pref.setTopicsList(topics)
+                  topics!!.add(it)
+                  pref.setTopicsList(topics!!)
               } else {
-                  topics.remove(it)
-                  pref.setTopicsList(topics)
+                  topics!!.remove(it)
+                  pref.setTopicsList(topics!!)
               }
           }
          layout.addView(check)

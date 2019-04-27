@@ -6,4 +6,8 @@
     <string name="topic">Topics</string>
     <string name="search_title">Trouvez un article</string>
     <string name="title_activity_article_reading" translatable="false">ArticleReadingActivity</string>
+    <string name="publish_date">Partagé le  </string>
+    <string name="save">Enregistrer</string>
+    <string name="share_social">Partager sur</string>
+    <string name="share_profile">Partager</string>
 </resources>
