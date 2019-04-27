@@ -8,19 +8,24 @@ import android.net.Uri
 import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
 import android.support.v4.app.Fragment
-import android.support.v7.app.AppCompatDelegate
-import android.support.v7.widget.AppCompatButton
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import com.example.tdm_project.adapters.sharedPostsAdapter
+import com.example.tdm_project.adapters.vertCardAdapter
+import com.example.tdm_project.data.SharedSavedNews
+import com.example.tdm_project.data.news
 
 
 class ProfileFragment : Fragment() {
-
-
-
+    lateinit var rootView : View
+    lateinit var sharedAdapter : sharedPostsAdapter
+    lateinit var rv : RecyclerView
+    var newsList = ArrayList<news>()
 
     companion object {
         val ARG_PSEUDO = "PSEUDO"
@@ -44,10 +49,13 @@ class ProfileFragment : Fragment() {
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val rootView = inflater.inflate(R.layout.profile_fragment,
+         rootView = inflater.inflate(R.layout.profile_fragment,
                        container, false)
         var pseudoText = rootView.findViewById<TextView>(R.id.profile_pseudo)
         var profileView = rootView.findViewById<ImageView>(R.id.profile_photo)
+        newsList = SharedSavedNews.getListSharedPosts()
+        intialiserVertically()
+
           rootView.findViewById<Button>(R.id.param).setOnClickListener {
               // preparé l'activité d'ajout
               val intent = Intent(rootView.context, ParameterActivity::class.java)
@@ -71,6 +79,16 @@ class ProfileFragment : Fragment() {
         return rootView
     }
 
+
+
+    private fun intialiserVertically() {
+        rv = rootView.findViewById<RecyclerView>(R.id.recyler_view_sahred_post)
+        val layout = LinearLayoutManager(rootView.context)
+        layout.orientation = LinearLayoutManager.VERTICAL
+        rv.layoutManager = layout
+        sharedAdapter = sharedPostsAdapter(rootView.context,newsList)
+        rv.adapter = sharedAdapter
+    }
 
 
 }

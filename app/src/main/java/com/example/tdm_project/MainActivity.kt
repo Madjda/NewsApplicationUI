@@ -3,17 +3,20 @@ import android.content.Context
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.Fragment
-import android.support.v7.widget.Toolbar
+import android.support.v7.widget.Toolbar;
+import android.support.v7.app.AppCompatDelegate
+import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
+
 import com.example.tdm_project.sharedPreferences.CustomBaseActivity
 import com.example.tdm_project.sharedPreferences.MyContextWrapper
-import com.example.tdm_project.sharedPreferences.preferencesProvider
-import android.content.Intent
-import android.net.Uri
-import android.util.Log
+import com.example.tdm_project.sharedPreferences.PreferencesProvider
+
 
 
 class MainActivity : CustomBaseActivity() {
-    lateinit var myPreference: preferencesProvider
+    lateinit var myPreference: PreferencesProvider
     val TAG = "TAG-MainActivity"
     lateinit var fragProfile : ProfileFragment
     var stringImageUri : String? = null
@@ -28,10 +31,16 @@ class MainActivity : CustomBaseActivity() {
         val intent = intent
         newPseudo = intent.getStringExtra("PSEUDO")
         stringImageUri = intent.getStringExtra("PHOTO")
-         if (stringImageUri != null) Log.i("URI_MAIN",stringImageUri)
+        if (stringImageUri != null) Log.i("URI_MAIN",stringImageUri)
         else Log.i("URI_MAIN","NULLLL")
-         fragProfile = ProfileFragment.newInstance(newPseudo,stringImageUri)
+        fragProfile = ProfileFragment.newInstance(newPseudo,stringImageUri)
+
     }
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+
+        return true
+    }
+
 
 
     // Sending the token to the fragement
@@ -61,7 +70,7 @@ class MainActivity : CustomBaseActivity() {
 
 
     override fun attachBaseContext(newBase: Context?) {
-        myPreference = preferencesProvider(newBase!!)
+        myPreference = PreferencesProvider(newBase!!)
         val lang = myPreference.getLoginCount()
         super.attachBaseContext(MyContextWrapper.wrap(newBase,lang))
     }

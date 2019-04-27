@@ -5,5 +5,6 @@
     <string name="chang_lang"> تغيير اللغة </string>
     <string name="welcome_user">أهلا بعودتك أنسة فاطمة.</string>
     <string name="topic">مواضيع اليوم</string>
+    <string name="search_title">Trouvez un article</string>
 
 </resources>

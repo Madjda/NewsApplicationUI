@@ -4,8 +4,13 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.SharedPreferences
 import android.preference.PreferenceManager
+import com.example.tdm_project.data.Topic
+import com.example.tdm_project.data.getTopics
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 
-class preferencesProvider (context: Context){
+
+class PreferencesProvider (context: Context){
 //**language**/
     val PREFERENCE_NAME = "SharedPreferenceExample"
     val PREFERENCE_LANGUAGE = "Language"
@@ -13,6 +18,8 @@ class preferencesProvider (context: Context){
 
     internal var mySharedPref : SharedPreferences = context.getSharedPreferences("filename",Context.MODE_PRIVATE)
     lateinit var editor : SharedPreferences.Editor
+    lateinit var gson: Gson
+    var topics = ArrayList<Topic>()
 
 
 
@@ -22,7 +29,9 @@ class preferencesProvider (context: Context){
         private const val DEVICE_TOKEN = "data.source.prefs.DEVICE_TOKEN"
     }
 
-
+    /**
+     * For teh dark mode preferences
+     */
    //Save the Dark mode
    @SuppressLint("CommitPrefEdits")
    fun setDarkModeState(state : String){
@@ -38,6 +47,32 @@ class preferencesProvider (context: Context){
         return mySharedPref.getString("current_theme","light")
     }
 
+    /**
+     * For the list of Topics
+     */
+
+   //save the list of topics
+    @SuppressLint("CommitPrefEdits")
+    fun setTopicsList(topics : ArrayList<Topic>){
+        gson = Gson()
+        val list = gson.toJson(topics)
+        editor = mySharedPref.edit()
+        editor.putString("current_topics",list)
+        editor.apply()
+    }
+
+    //get the list of topics
+    fun loadTopicsList(): ArrayList<Topic> {
+        val gson = Gson()
+        val json = mySharedPref.getString("current_topics", null)
+        val type = object : TypeToken<ArrayList<Topic>>() {
+        }.type
+
+        return if(json !=null)
+            {gson.fromJson(json, type)}
+
+        else getTopics()
+    }
 
     //create a variable to access to the shared preferences
     private val preferences = PreferenceManager.getDefaultSharedPreferences(context)

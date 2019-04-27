@@ -1,5 +1,6 @@
 package com.example.tdm_project
 
+
 import android.app.Activity
 import android.app.AlertDialog
 import android.app.PendingIntent.getActivity
@@ -15,6 +16,7 @@ import android.os.Environment
 import android.provider.MediaStore
 import android.support.annotation.RequiresApi
 import android.support.v4.content.FileProvider
+import android.support.v7.widget.LinearLayoutCompat
 import android.transition.Slide
 import android.transition.TransitionManager
 import android.util.Log
@@ -22,8 +24,10 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.*
+import com.example.tdm_project.data.Topic
+import com.example.tdm_project.data.getTopics
 import com.example.tdm_project.sharedPreferences.CustomBaseActivity
-import com.example.tdm_project.sharedPreferences.preferencesProvider
+import com.example.tdm_project.sharedPreferences.PreferencesProvider
 import kotlinx.android.synthetic.main.parameters.*
 import java.io.ByteArrayOutputStream
 import java.io.File
@@ -35,28 +39,25 @@ class ParameterActivity : CustomBaseActivity() {
     val TAKE_PICTURE = 1
     val SELECT_PICTURE = 2
     lateinit var modeSwitch: Switch
-    lateinit var pref: preferencesProvider
+    lateinit var pref: PreferencesProvider
     lateinit var btnEditPhoto : Button
     lateinit var btnChange : Button
-    lateinit var imageView : ImageView
     lateinit var btnEditPseudo : Button
     var currentPath : String? = null
     var pseudo : String? = null
+    var topics = ArrayList<Topic>()
 
 
 
     @RequiresApi(Build.VERSION_CODES.KITKAT)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         //for the shared preferences
-        pref = preferencesProvider(this)
+        pref = PreferencesProvider(this)
 
-
-
-      ///// PopUp Picture
-
-
+        //get the view
+        setContentView(R.layout.parameters)
+        pref = PreferencesProvider(this)
         setContentView(R.layout.parameters)
         btnEditPhoto = this.findViewById<View>(R.id.btn_edit_pic) as Button
         modeSwitch = this.findViewById(R.id.mode_switcher)
@@ -66,11 +67,9 @@ class ParameterActivity : CustomBaseActivity() {
         if (pref.load() == "dark") {
             modeSwitch.isChecked = true
         }
-
         //the switch button actions : change the theme
         modeSwitch.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
-
                 //if it is switched then it is the dark mode
                 pref.setDarkModeState("dark")
                 recreate()
@@ -81,9 +80,9 @@ class ParameterActivity : CustomBaseActivity() {
                 //if it is not pressed then it is the light mode
                 pref.setDarkModeState("light")
                 recreate()
-
             }
         }
+
         Log.i("here", modeSwitch.id.toString())
 
 //Languages :
@@ -220,10 +219,36 @@ class ParameterActivity : CustomBaseActivity() {
             )
         }
 
+        //set topics list
+        topics = pref.loadTopicsList()
+        initializeTopicsList()
+
 
     }
 
-
+  private fun initializeTopicsList(){
+      val list = getTopics()
+      var layout = findViewById<LinearLayoutCompat>(R.id.topics_choice_holder)
+      Toast.makeText(this,layout.toString(),Toast.LENGTH_LONG).show()
+     list.forEach {
+          val check = CheckBox(this)
+          check.text = it.title
+          if (topics.contains(it)){
+              check.isChecked = true
+          }
+          check.setOnClickListener { v ->
+              val checked = (v as CheckBox).isChecked
+              if (checked) {
+                  topics.add(it)
+                  pref.setTopicsList(topics)
+              } else {
+                  topics.remove(it)
+                  pref.setTopicsList(topics)
+              }
+          }
+         layout.addView(check)
+      }
+  }
 
     /////Language
 

@@ -1,20 +1,18 @@
 package com.example.tdm_project.sharedPreferences
 
-import android.content.SharedPreferences
 import android.os.Bundle
-import android.preference.PreferenceManager
 import android.support.v7.app.AppCompatActivity
 import com.example.tdm_project.R
 
 open class CustomBaseActivity : AppCompatActivity() {
 
     private lateinit var currentTheme: String
-    private lateinit var sharedPref: preferencesProvider
+    private lateinit var sharedPref: PreferencesProvider
 
     @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        sharedPref = preferencesProvider(context = this)
+        sharedPref = PreferencesProvider(context = this)
 
         currentTheme = sharedPref.load()
 
