@@ -68,7 +68,8 @@ class PreferencesProvider (context: Context){
         val type = object : TypeToken<ArrayList<Topic>>() {
         }.type
 
-        return if(json != null)
+
+        return if(json !=null)
             {gson.fromJson(json, type)}
 
         else getTopics()

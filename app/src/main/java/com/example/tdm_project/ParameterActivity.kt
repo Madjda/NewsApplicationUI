@@ -52,15 +52,13 @@ class ParameterActivity : CustomBaseActivity() {
     @RequiresApi(Build.VERSION_CODES.KITKAT)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //for the shared preferences
-        pref = PreferencesProvider(this)
+
 
         //get the view
         setContentView(R.layout.parameters)
 
-
-
-
+        //for the shared preferences
+        pref = PreferencesProvider(this)
         setContentView(R.layout.parameters)
         btnEditPhoto = this.findViewById<View>(R.id.btn_edit_pic) as Button
         modeSwitch = this.findViewById(R.id.mode_switcher)
@@ -236,17 +234,29 @@ class ParameterActivity : CustomBaseActivity() {
      list.forEach {
           val check = CheckBox(this)
           check.text = it.title
+<<<<<<< HEAD
           if (topics!!.contains(it)){
+=======
+          if (topics.contains(it)){
+>>>>>>> 64963e6f206046107262ff90892e54c3351d7c43
               check.isChecked = true
           }
           check.setOnClickListener { v ->
               val checked = (v as CheckBox).isChecked
               if (checked) {
+<<<<<<< HEAD
                   topics!!.add(it)
                   pref.setTopicsList(topics!!)
               } else {
                   topics!!.remove(it)
                   pref.setTopicsList(topics!!)
+=======
+                  topics.add(it)
+                  pref.setTopicsList(topics)
+              } else {
+                  topics.remove(it)
+                  pref.setTopicsList(topics)
+>>>>>>> 64963e6f206046107262ff90892e54c3351d7c43
               }
           }
          layout.addView(check)

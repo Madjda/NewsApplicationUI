@@ -13,6 +13,7 @@ fun getTopics() : ArrayList<Topic>{
     val topicsList = ArrayList<Topic>()
     topicsList.add(Topic("politics",  R.drawable.newspaper ))
     topicsList.add(Topic("tech",  R.drawable.tech_icon ))
+
     topicsList.add(Topic("art" ,R.drawable.art_icon))
     topicsList.add(Topic("science", R.drawable.art_icon))
     topicsList.add(Topic("sport", R.drawable.art_icon))

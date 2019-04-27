@@ -36,6 +36,32 @@
              android:layout_margin="15dp"
              android:src="@drawable/ic_more_vert_black_24dp"
              android:layout_height="wrap_content"/>
+    <android.support.v7.widget.AppCompatImageButton
+            android:id="@+id/btn_share_profile"
+            android:layout_gravity="end|top"
+            android:layout_alignBaseline="@+id/news_image"
+            android:layout_alignEnd="@+id/news_image"
+            android:layout_below="@+id/btn_share"
+            android:layout_alignRight="@+id/news_image"
+            android:layout_width="wrap_content"
+            android:tint="?attr/icon_color"
+            android:background="@android:color/transparent"
+            android:layout_margin="15dp"
+            android:src="@drawable/ic_more_vert_black_24dp"
+            android:layout_height="wrap_content"/>
+    <android.support.v7.widget.AppCompatImageButton
+            android:id="@+id/btn_save"
+            android:layout_gravity="end|top"
+            android:layout_alignBaseline="@+id/news_image"
+            android:layout_alignEnd="@+id/news_image"
+            android:layout_below="@+id/btn_share_profile"
+            android:layout_alignRight="@+id/news_image"
+            android:layout_width="wrap_content"
+            android:tint="?attr/icon_color"
+            android:background="@android:color/transparent"
+            android:layout_margin="15dp"
+            android:src="@drawable/ic_more_vert_black_24dp"
+            android:layout_height="wrap_content"/>
 
      <TextView
              android:layout_width="match_parent"

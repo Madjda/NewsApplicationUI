@@ -2,8 +2,7 @@ package com.example.tdm_project.data
 
 import android.os.Parcel
 import android.os.Parcelable
-import com.example.tdm_project.sharedPreferences.PreferencesProvider
-import com.google.gson.annotations.SerializedName
+
 
 
 data class news (
@@ -116,4 +115,8 @@ fun getList ( ) : ArrayList<news>{
       ))
     return NewsList
    }
+
+
+
+
 

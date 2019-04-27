@@ -107,6 +107,7 @@ class ArticleReadingActivity : CustomBaseActivity() {
         //Change settings icon to 'X' icon
         fabSettings.setImageResource(R.drawable.ic_close_black_24dp)
         fabExpanded = true
+
     }
 
 }

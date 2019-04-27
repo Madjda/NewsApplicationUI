@@ -37,17 +37,22 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="132dp"/>
 
-<!--
+<android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/profile_pseudo"
+        app:layout_constraintStart_toEndOf="@id/profile_pseudo"
+        android:layout_marginTop="24dp"
+>
     <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/recyler_view_sahred_post"
+            android:layout_height="match_parent"
             app:layout_constraintTop_toBottomOf="@id/profile_pseudo"
             app:layout_constraintStart_toEndOf="@id/profile_pseudo"
-            android:layout_marginTop="24dp">
+            android:id="@+id/recyler_view_sahred_post">
 
     </android.support.v7.widget.RecyclerView>
--->
+</android.support.v4.widget.NestedScrollView>
 
 
 </android.support.constraint.ConstraintLayout>
