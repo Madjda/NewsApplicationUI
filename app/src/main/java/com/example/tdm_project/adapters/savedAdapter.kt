@@ -51,26 +51,17 @@ class savedAdapter(val context: Context, val news : ArrayList<news>) : RecyclerV
             btnShareProfile = objet.findViewById<AppCompatImageButton>(R.id.btn_share_profile)
             btnShare = objet.findViewById<AppCompatImageButton>(R.id.btn_share)
             btnShare.setOnClickListener {
-                var myIntent = Intent (Intent.ACTION_SEND)
-                myIntent.setType("text/plain")
-                myIntent.putExtra(Intent.EXTRA_SUBJECT,item.Title)
-                myIntent.putExtra(Intent.EXTRA_TEXT,item.Text)
-                myIntent.putExtra(Intent.EXTRA_TITLE,item.Second_title)
-                context.startActivity(Intent.createChooser(myIntent,context.getResources().getString(R.string.share)))
+                SharedSavedNews.sharePost(item,context)
 
             }
 
             btnShareProfile.setOnClickListener {
 
-                SharedSavedNews.getListSharedPosts().add(item)
-                Log.i("SIIIZEEE",  SharedSavedNews.getListSharedPosts().size.toString())
+                SharedSavedNews.shareProfilePost(item,context)
 
             }
-
-            val intent = Intent(context, ArticleReadingActivity::class.java)
             objet.setOnClickListener {
-                intent.putExtra("article",item)
-                context.startActivity(intent)
+             SharedSavedNews.readArticle(item,context)
             }
         }
 

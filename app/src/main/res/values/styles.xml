@@ -9,6 +9,7 @@
         <item name="colorAccent">#303F9F</item>
         <item name="background_color">#fcfcfc</item>
         <item name="card_background">#fff</item>
+        <item name="link_background">#ADADAD</item>
         <item name="primary_text_color">#000</item>
         <item name="secondary_text_color">#808080</item>
         <item name="tint_color">#424547</item>
@@ -20,10 +21,11 @@
         <item name="colorPrimary">#0F0F11</item>
         <item name="colorPrimaryDark">#000000</item>
         <item name="colorAccent">#1976D2</item>
-        <item name="background_color">#303030</item>
+        <item name="background_color">#000000</item>
         <item name="card_background">#424242</item>
+        <item name="link_background">#757575</item>
         <item name="primary_text_color">#fff</item>
-        <item name="secondary_text_color">#fcfcfc</item>
+        <item name="secondary_text_color">#A7A7A8</item>
         <item name="tint_color">#fff</item>
         <item name="icon_color">#fff</item>
         <item name="windowActionBar">false</item>

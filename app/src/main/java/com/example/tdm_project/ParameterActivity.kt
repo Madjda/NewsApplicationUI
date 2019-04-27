@@ -27,6 +27,7 @@ import android.widget.*
 import com.example.tdm_project.data.Topic
 import com.example.tdm_project.data.getTopics
 import com.example.tdm_project.sharedPreferences.CustomBaseActivity
+import com.example.tdm_project.sharedPreferences.MyContextWrapper
 import com.example.tdm_project.sharedPreferences.PreferencesProvider
 import kotlinx.android.synthetic.main.parameters.*
 import java.io.ByteArrayOutputStream
@@ -36,6 +37,7 @@ import java.text.SimpleDateFormat
 
 
 class ParameterActivity : CustomBaseActivity() {
+    lateinit var myPreference: PreferencesProvider
     val TAKE_PICTURE = 1
     val SELECT_PICTURE = 2
     lateinit var modeSwitch: Switch
@@ -201,7 +203,7 @@ class ParameterActivity : CustomBaseActivity() {
 
 
             confirmBtn.setOnClickListener {
-
+                popupWindow.dismiss()
                 pseudo= newPseudo.text.toString()
                 Toast.makeText(this,pseudo,Toast.LENGTH_SHORT).show()
                 val pseudoIntent = Intent (this,MainActivity ::class.java)
@@ -233,30 +235,20 @@ class ParameterActivity : CustomBaseActivity() {
       Toast.makeText(this,layout.toString(),Toast.LENGTH_LONG).show()
      list.forEach {
           val check = CheckBox(this)
-          check.text = it.title
-<<<<<<< HEAD
+          check.text = this.getString(it.displayedTitle)
+
           if (topics!!.contains(it)){
-=======
-          if (topics.contains(it)){
->>>>>>> 64963e6f206046107262ff90892e54c3351d7c43
               check.isChecked = true
           }
           check.setOnClickListener { v ->
               val checked = (v as CheckBox).isChecked
               if (checked) {
-<<<<<<< HEAD
                   topics!!.add(it)
                   pref.setTopicsList(topics!!)
               } else {
                   topics!!.remove(it)
                   pref.setTopicsList(topics!!)
-=======
-                  topics.add(it)
-                  pref.setTopicsList(topics)
-              } else {
-                  topics.remove(it)
-                  pref.setTopicsList(topics)
->>>>>>> 64963e6f206046107262ff90892e54c3351d7c43
+
               }
           }
          layout.addView(check)
@@ -271,8 +263,8 @@ class ParameterActivity : CustomBaseActivity() {
         val lang = pref.getLoginCount()
         val index = languagesList.indexOf(lang)
         var mBuilder = AlertDialog.Builder(this)
-        mBuilder.setTitle("Changer La Langue")
-        mBuilder.setSingleChoiceItems( languagesList,-1) { dialog , i: Int ->
+        mBuilder.setTitle(this.getString(R.string.chang_lang))
+        mBuilder.setSingleChoiceItems( languagesList,index) { dialog , i: Int ->
 
             if (i==0) {
                 pref.setLoginCount("fr")
@@ -290,7 +282,7 @@ class ParameterActivity : CustomBaseActivity() {
 
         }
 
-        mBuilder.setNeutralButton("Annuler") { dialog, which: Int ->
+        mBuilder.setNeutralButton(this.getString(R.string.cancel)) { dialog, which: Int ->
             dialog.dismiss()
 
 
@@ -384,7 +376,11 @@ class ParameterActivity : CustomBaseActivity() {
         return image
     }
 
-
+    override fun attachBaseContext(newBase: Context?) {
+        myPreference = PreferencesProvider(newBase!!)
+        val lang = myPreference.getLoginCount()
+        super.attachBaseContext(MyContextWrapper.wrap(newBase,lang))
+    }
 
 
 

@@ -25,8 +25,6 @@ class MainActivity : CustomBaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        var toolbar = findViewById<Toolbar>(R.id.TopToolbar)
-        setSupportActionBar(toolbar)
         setUpBottomNavigationBar()
         val intent = intent
         newPseudo = intent.getStringExtra("PSEUDO")

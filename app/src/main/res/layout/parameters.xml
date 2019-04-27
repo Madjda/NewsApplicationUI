@@ -12,17 +12,15 @@
     <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Paramètres"
+            android:text="@string/param"
             android:textColor="?attr/primary_text_color"
             android:textSize="25sp"
             android:padding="10dp"
     />
 
     <android.support.v7.widget.CardView
-            android:layout_margin="7dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="55dp"
             android:background="@android:color/black"
             app:cardBackgroundColor="?attr/card_background"
 
@@ -31,11 +29,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        android:background="?attr/card_background"
         >
     <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Mode"
+            android:text="@string/mode"
             android:textColor="?attr/primary_text_color"
             android:textSize="22sp"
             android:padding="10dp"
@@ -45,17 +44,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="?attr/primary_text_color"
-                    android:text="    Mode nuit  "
+                    android:layout_margin="7dp"
+                    android:text="@string/dark_mode"
                     android:buttonTint="?attr/tint_color"
                     android:drawableStart="@drawable/ic_nightmode"
+                    android:drawableTint="?attr/icon_color"
             />
 
 </LinearLayout>
 
 </android.support.v7.widget.CardView>
     <android.support.v7.widget.CardView
-            android:background="?attr/background_color"
-            android:layout_marginTop="10dp"
+            android:background="?attr/card_background"            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -64,11 +64,12 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:background="?attr/card_background"
+
         >
             <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Profile"
+                    android:text="@string/profile"
                     android:textColor="?attr/primary_text_color"
                     android:textSize="20sp"
                     android:padding="10dp"
@@ -76,18 +77,20 @@
           <Button android:layout_width="wrap_content"
                   android:layout_height="match_parent"
                   android:id="@+id/btn_edit_pic"
-                  android:text="   changer la photo"
+                  android:text="@string/chang_pic"
                   android:drawableLeft="@drawable/ic_picture"
+                  android:drawableTint="?attr/icon_color"
+                  android:textColor="?attr/primary_text_color"
                   android:background="?attr/card_background"
-
                   />
             <Button android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:id="@+id/btn_edit_pseudo"
-                    android:text="   changer le pseudo "
+                    android:text="@string/chang_pseu"
+                    android:drawableTint="?attr/icon_color"
+                    android:textColor="?attr/primary_text_color"
                     android:drawableLeft="@drawable/ic_edit_black_24dp"
                     android:background="?attr/card_background"
-
 
           />
 
@@ -97,7 +100,7 @@
     </android.support.v7.widget.CardView>
 
     <android.support.v7.widget.CardView
-            android:background="?attr/background_color"
+            android:background="?attr/card_background"
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -111,7 +114,7 @@
             <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Langues"
+                    android:text="@string/laguages"
                     android:textColor="?attr/primary_text_color"
                     android:textSize="20sp"
                     android:padding="10dp"
@@ -124,8 +127,10 @@
                     app:layout_constraintTop_toBottomOf="@+id/tv_welcome"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="  Changer la langue"
+                    android:text="@string/chang_lang"
                     android:background="?attr/card_background"
+                    android:drawableTint="?attr/icon_color"
+                    android:textColor="?attr/primary_text_color"
                     app:layout_constraintHorizontal_bias="1.0"
                     android:drawableLeft="@drawable/ic_language"
             />
@@ -142,12 +147,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
+
                 android:background="?attr/card_background"
         >
             <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Topics"
+                    android:text="@string/topics"
                     android:textColor="?attr/primary_text_color"
                     android:textSize="20sp"
                     android:padding="10dp"
@@ -155,6 +161,8 @@
 
         </LinearLayout>
     </android.support.v7.widget.CardView>
+    <android.support.v4.widget.NestedScrollView android:layout_width="match_parent"
+                                                android:layout_height="match_parent">
     <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:background="?attr/card_background"
@@ -164,7 +172,9 @@
                 android:id="@+id/topics_choice_holder"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="?attr/card_background"
                 android:orientation="vertical"/>
 
     </android.support.v7.widget.CardView>
+    </android.support.v4.widget.NestedScrollView>
 </android.support.v7.widget.LinearLayoutCompat>

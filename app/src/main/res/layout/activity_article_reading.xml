@@ -27,8 +27,7 @@
           android:layout_marginBottom="7dp"
           android:layout_marginTop="?attr/actionBarSize"
           android:layout_width="match_parent"
-                                              android:layout_height="wrap_content">
-
+          android:layout_height="wrap_content">
     <include layout="@layout/content_article_reading"/>
 
   </android.support.v4.widget.NestedScrollView>

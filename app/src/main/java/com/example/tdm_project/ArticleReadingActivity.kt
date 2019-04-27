@@ -1,6 +1,8 @@
 package com.example.tdm_project
 
 import android.annotation.SuppressLint
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
 import android.support.design.widget.Snackbar
@@ -13,15 +15,18 @@ import android.view.View
 import android.widget.LinearLayout
 import android.widget.Toast
 import com.example.tdm_project.R.string.publish_date
+import com.example.tdm_project.data.SharedSavedNews
 import com.example.tdm_project.data.news
 import com.example.tdm_project.sharedPreferences.CustomBaseActivity
+import com.example.tdm_project.sharedPreferences.MyContextWrapper
+import com.example.tdm_project.sharedPreferences.PreferencesProvider
 
 import kotlinx.android.synthetic.main.activity_article_reading.*
 
 class ArticleReadingActivity : CustomBaseActivity() {
 
     lateinit var fabSettings : FloatingActionButton
-
+    lateinit var myPreference: PreferencesProvider
     lateinit var layoutFabSave : LinearLayout
     lateinit var layoutFabShare : LinearLayout
     lateinit var layoutFabSharePrl :  LinearLayout
@@ -73,15 +78,15 @@ class ArticleReadingActivity : CustomBaseActivity() {
         }
 
         layoutFabSave.setOnClickListener {
-            Toast.makeText(this, "saved done", Toast.LENGTH_SHORT).show()
+            SharedSavedNews.savePost(article,this)
         }
 
         layoutFabShare.setOnClickListener {
-            Toast.makeText(this, "sharing done", Toast.LENGTH_SHORT).show()
+          SharedSavedNews.sharePost(article,this)
         }
 
         layoutFabSharePrl.setOnClickListener {
-            Toast.makeText(this, "profile done", Toast.LENGTH_SHORT).show()
+            SharedSavedNews.shareProfilePost(article,this)
         }
 
         //Only main FAB is visible in the beginning
@@ -108,6 +113,11 @@ class ArticleReadingActivity : CustomBaseActivity() {
         fabSettings.setImageResource(R.drawable.ic_close_black_24dp)
         fabExpanded = true
 
+    }
+    override fun attachBaseContext(newBase: Context?) {
+        myPreference = PreferencesProvider(newBase!!)
+        val lang = myPreference.getLoginCount()
+        super.attachBaseContext(MyContextWrapper.wrap(newBase,lang))
     }
 
 }

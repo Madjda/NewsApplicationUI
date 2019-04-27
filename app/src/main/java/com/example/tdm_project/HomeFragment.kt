@@ -138,7 +138,8 @@ class HomeFragment : Fragment() {
             btn.maxWidth = 450
             btn.minWidth = 350
             btn.minHeight = 200
-            val titre = it.title
+            val cat = it.title
+            val titre = rootView.context.resources.getString(it.displayedTitle)
             btn.text = titre
             btn.setTextColor(rootView.resources.getColor(R.color.white , null))
 
@@ -153,7 +154,7 @@ class HomeFragment : Fragment() {
             btn.background = rootView.resources.getDrawable(style,null)
 
             btn.setOnClickListener {
-                chargeNews(titre)
+                chargeNews(cat)
             }
 
             layout.addView(btn)
