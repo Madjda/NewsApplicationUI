@@ -2,6 +2,7 @@ package com.example.tdm_project.adapters
 
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.support.v7.widget.AppCompatImageButton
 import android.support.v7.widget.RecyclerView
 import android.util.Log
@@ -14,6 +15,8 @@ import com.example.tdm_project.ArticleReadingActivity
 import com.example.tdm_project.R
 import com.example.tdm_project.data.SharedSavedNews
 import com.example.tdm_project.data.news
+import com.facebook.FacebookSdk
+import com.squareup.picasso.Picasso
 
 class horizCardAdapter(val context: Context , val news : ArrayList<news>) : RecyclerView.Adapter<horizCardAdapter.ViewHolder> (){
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): ViewHolder {
@@ -41,10 +44,15 @@ class horizCardAdapter(val context: Context , val news : ArrayList<news>) : Recy
         lateinit var btnSave : AppCompatImageButton
           fun bind(item : news){
               objet.findViewById<TextView>(R.id.news_title).text = item.Title
-              objet.findViewById<TextView>(R.id.news_date).text = item.Date + " By"
+              objet.findViewById<TextView>(R.id.news_date).text = item.Date + ","
               objet.findViewById<TextView>(R.id.news_descrp).text = item.Second_title
               objet.findViewById<TextView>(R.id.news_writer).text = item.Writer
-              objet.findViewById<ImageView>(R.id.news_image)
+              val img =objet.findViewById<ImageView>(R.id.news_image)
+              Picasso
+                  .get() // give it the context
+                  .load(item.Image)
+                  .resize(100,100)
+                  .into(img)
               btnShareProfile = objet.findViewById<AppCompatImageButton>(R.id.btn_share_profile)
               btnShare = objet.findViewById<AppCompatImageButton>(R.id.btn_share)
               btnSave = objet.findViewById<AppCompatImageButton>(R.id.btn_save)

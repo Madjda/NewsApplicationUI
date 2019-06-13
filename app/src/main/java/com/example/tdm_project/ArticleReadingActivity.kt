@@ -3,6 +3,7 @@ package com.example.tdm_project
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
 import android.support.design.widget.Snackbar
@@ -12,6 +13,7 @@ import android.support.v7.app.AppCompatViewInflater
 import android.support.v7.widget.AppCompatImageView
 import android.support.v7.widget.AppCompatTextView
 import android.view.View
+import android.webkit.WebView
 import android.widget.LinearLayout
 import android.widget.Toast
 import com.example.tdm_project.R.string.publish_date
@@ -20,6 +22,7 @@ import com.example.tdm_project.data.news
 import com.example.tdm_project.sharedPreferences.CustomBaseActivity
 import com.example.tdm_project.sharedPreferences.MyContextWrapper
 import com.example.tdm_project.sharedPreferences.PreferencesProvider
+import com.squareup.picasso.Picasso
 
 import kotlinx.android.synthetic.main.activity_article_reading.*
 
@@ -55,9 +58,12 @@ class ArticleReadingActivity : CustomBaseActivity() {
         findViewById<AppCompatTextView>(R.id.title_input).text =  article.Title
         findViewById<AppCompatTextView>(R.id.date_input).text = getString(publish_date) + " " +article.Date
         findViewById<AppCompatTextView>(R.id.writer_input).text = article.Writer
-        findViewById<AppCompatTextView>(R.id.article_text).text = article.Text
-        findViewById<AppCompatImageView>(R.id.article_image)
-
+        findViewById<AppCompatTextView>(R.id.article_text).text = article.url
+       val img= findViewById<AppCompatImageView>(R.id.article_image)
+        Picasso
+            .get() // give it the context
+            .load(article.Image)
+            .into(img)
 
 
        fabSettings = this.findViewById(R.id.fabSettings) as FloatingActionButton
@@ -91,8 +97,6 @@ class ArticleReadingActivity : CustomBaseActivity() {
 
         //Only main FAB is visible in the beginning
         closeSubMenusFab()
-
-
 
     }
     private fun closeSubMenusFab(){

@@ -3,6 +3,19 @@
           xmlns:tools="http://schemas.android.com/tools"
           package="com.example.tdm_project">
 
+    <uses-feature
+            android:name="android.hardware.camera2"
+            android:required="true"/>
+    <uses-feature
+            android:name="android.hardware.camera.any"
+            android:required="true"/>
+    <uses-feature
+            android:name="android.hardware.camera.autofocus"
+            android:required="false"/>
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
     <application
             android:allowBackup="true"
             android:icon="@mipmap/ic_launcher"
@@ -11,6 +24,8 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".sharedPreferences.WebBrowserActivity">
+        </activity>
         <activity
                 android:name=".ArticleReadingActivity"
                 android:label="@string/title_activity_article_reading"
@@ -23,35 +38,20 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".ParameterActivity"
-                  android:windowSoftInputMode="adjustResize"
-        />
+        <activity
+                android:name=".ParameterActivity"
+                android:windowSoftInputMode="adjustResize"/>
 
-
-        <provider android:authorities="com.example.tdm_project.fileProvider"
-                  android:name="android.support.v4.content.FileProvider"
-                  android:exported="false"
-                  android:grantUriPermissions="true"
-        >
-            <meta-data android:name="android.support.FILE_PROVIDER_PATHS"
-                       android:resource="@xml/file_paths">
+        <provider
+                android:name="android.support.v4.content.FileProvider"
+                android:authorities="com.example.tdm_project.fileProvider"
+                android:exported="false"
+                android:grantUriPermissions="true">
+            <meta-data
+                    android:name="android.support.FILE_PROVIDER_PATHS"
+                    android:resource="@xml/file_paths">
             </meta-data>
-
-
         </provider>
-
     </application>
 
-
-
-    <uses-feature android:name="android.hardware.camera2"
-                  android:required="true" />
-    <uses-feature
-            android:name="android.hardware.camera.any"
-            android:required="true" />
-    <uses-feature
-            android:name="android.hardware.camera.autofocus"
-            android:required="false" />
-    <!--<uses-permission android:name="android.permission.CAMERA"/>-->
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 </manifest>
