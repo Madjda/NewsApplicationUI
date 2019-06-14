@@ -11,6 +11,7 @@ import android.widget.TextView
 import com.example.tdm_project.ArticleReadingActivity
 import com.example.tdm_project.R
 import com.example.tdm_project.data.news
+import com.example.tdm_project.sharedPreferences.WebBrowserActivity
 
 class sharedPostsAdapter (val context: Context, val news : ArrayList<news>) : RecyclerView.Adapter<sharedPostsAdapter.ViewHolder> (){
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): ViewHolder {
@@ -41,7 +42,7 @@ class sharedPostsAdapter (val context: Context, val news : ArrayList<news>) : Re
             objet.findViewById<TextView>(R.id.news_writer).text = item.Writer
             objet.findViewById<ImageView>(R.id.news_image)
 
-            val intent = Intent(context, ArticleReadingActivity::class.java)
+            val intent = Intent(context, WebBrowserActivity::class.java)
             objet.setOnClickListener {
                 intent.putExtra("article", item)
                 context.startActivity(intent)

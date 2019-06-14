@@ -6,7 +6,7 @@
     <string name="topic">Topics</string>
     <string name="search_title">Trouvez un article</string>
     <string name="title_activity_article_reading">ArticleReadingActivity</string>
-    <string name="share" > partager vers </string>
+    <string name="share">partager vers</string>
     <string name="politics">Politique</string>
     <string name="tech">Techno</string>
     <string name="art">Art</string>
@@ -14,13 +14,13 @@
     <string name="sport">Sport</string>
     <string name="economics">Economie</string>
     <string name="culture">Culture</string>
-    <string name="mode"> mode </string>
-    <string name="dark_mode">  Mode Nuit </string>
-    <string name="profile"> Profile </string>
-    <string name="chang_pic"> Changer la photo de profile </string>
-    <string name="chang_pseu"> Changer le pseudo </string>
-    <string name="laguages"> Langues </string>
-    <string name="topics"> Thèmes </string>
+    <string name="mode">mode</string>
+    <string name="dark_mode">Mode Nuit</string>
+    <string name="profile">Profile</string>
+    <string name="chang_pic">Changer la photo de profile</string>
+    <string name="chang_pseu">Changer le pseudo</string>
+    <string name="laguages">Langues</string>
+    <string name="topics">Thèmes</string>
     <string name="save">Enrigestrer</string>
     <string name="share_social">Partager sur</string>
     <string name="share_profile">Partager</string>
@@ -29,8 +29,8 @@
     <string name="confirmer">Confirmer</string>
     <string name="prendre_photo">Prendre photo</string>
     <string name="choisir_photo">Choisir photo</string>
-    <string name="all">Tous </string>
-    <string name="home"> Accueil </string>
-    <string name="saved"> Sauvegardes </string>
+    <string name="all">Tous</string>
+    <string name="home">Accueil</string>
+    <string name="saved">Sauvegardes</string>
     <string name="cancel">Annuler</string>
 </resources>
