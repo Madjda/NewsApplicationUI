@@ -14,6 +14,7 @@ import com.example.tdm_project.ArticleReadingActivity
 import com.example.tdm_project.R
 import com.example.tdm_project.data.SharedSavedNews
 import com.example.tdm_project.data.news
+import com.squareup.picasso.Picasso
 
 
 class savedAdapter(val context: Context, val news : ArrayList<news>) : RecyclerView.Adapter<savedAdapter.ViewHolder> (){
@@ -47,7 +48,12 @@ class savedAdapter(val context: Context, val news : ArrayList<news>) : RecyclerV
             objet.findViewById<TextView>(R.id.news_date).text = item.Date + " By"
             objet.findViewById<TextView>(R.id.news_descrp).text = item.Second_title
             objet.findViewById<TextView>(R.id.news_writer).text = item.Writer
-            objet.findViewById<ImageView>(R.id.news_image)
+            val img =objet.findViewById<ImageView>(R.id.news_image)
+            Picasso
+                .get() // give it the context
+                .load(item.Image)
+                .into(img)
+
             btnShareProfile = objet.findViewById<AppCompatImageButton>(R.id.btn_share_profile)
             btnShare = objet.findViewById<AppCompatImageButton>(R.id.btn_share)
             btnShare.setOnClickListener {

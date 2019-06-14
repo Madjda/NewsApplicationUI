@@ -1,24 +1,21 @@
 package com.example.tdm_project.adapters
 
 import android.content.Context
-import android.content.Intent
-import android.net.Uri
 import android.support.v7.widget.AppCompatImageButton
+import android.support.v7.widget.PopupMenu
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import com.example.tdm_project.ArticleReadingActivity
 import com.example.tdm_project.R
 import com.example.tdm_project.data.SharedSavedNews
 import com.example.tdm_project.data.news
-import com.facebook.FacebookSdk
 import com.squareup.picasso.Picasso
 
-class horizCardAdapter(val context: Context , val news : ArrayList<news>) : RecyclerView.Adapter<horizCardAdapter.ViewHolder> (){
+
+class HorizCardAdapter(val context: Context, val news : ArrayList<news>) : RecyclerView.Adapter<HorizCardAdapter.ViewHolder> (){
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): ViewHolder {
         val newsCard = LayoutInflater.from(context).inflate(R.layout.horiz_news_view,p0,false)
         return ViewHolder(newsCard)
@@ -39,9 +36,8 @@ class horizCardAdapter(val context: Context , val news : ArrayList<news>) : Recy
     }
 
     inner class ViewHolder (private val objet: View) : RecyclerView.ViewHolder(objet){
-        lateinit var btnShare : AppCompatImageButton
-        lateinit var btnShareProfile : AppCompatImageButton
-        lateinit var btnSave : AppCompatImageButton
+        lateinit var btnMenu : AppCompatImageButton
+
           fun bind(item : news){
               objet.findViewById<TextView>(R.id.news_title).text = item.Title
               objet.findViewById<TextView>(R.id.news_date).text = item.Date + ","
@@ -51,36 +47,32 @@ class horizCardAdapter(val context: Context , val news : ArrayList<news>) : Recy
               Picasso
                   .get() // give it the context
                   .load(item.Image)
-                  .resize(100,100)
                   .into(img)
-              btnShareProfile = objet.findViewById<AppCompatImageButton>(R.id.btn_share_profile)
-              btnShare = objet.findViewById<AppCompatImageButton>(R.id.btn_share)
-              btnSave = objet.findViewById<AppCompatImageButton>(R.id.btn_save)
 
-              btnShare.setOnClickListener {
-                  SharedSavedNews.sharePost(item,context)
-
+              btnMenu = objet.findViewById(R.id.menu_button)
+              btnMenu.setOnClickListener {
+                  showPopupMenu(btnMenu,item,context)
               }
 
-              btnShareProfile.setOnClickListener {
 
-                  SharedSavedNews.shareProfilePost(item,context)
 
-              }
 
-              btnSave.setOnClickListener {
-
-                  SharedSavedNews.savePost(item,context)
-
-              }
               objet.setOnClickListener {
                   SharedSavedNews.readArticle(item,context)
               }
 
 
 
-
           }
+        fun showPopupMenu(view: View, item: news , context: Context) {
+            // inflate menu
+            val popup = PopupMenu(view.context, view)
+            val inflater = popup.menuInflater
+            inflater.inflate(R.menu.card_menu, popup.menu)
+            popup.setOnMenuItemClickListener(CustomMenuItem(item,context))
+            popup.show()
+        }
+
 
 
 

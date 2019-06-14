@@ -1,9 +1,8 @@
 package com.example.tdm_project.adapters
 
 import android.content.Context
-import android.content.Intent
-import android.net.Uri
 import android.support.v7.widget.AppCompatImageButton
+import android.support.v7.widget.PopupMenu
 import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
@@ -11,7 +10,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import com.example.tdm_project.ArticleReadingActivity
 import com.example.tdm_project.R
 import com.example.tdm_project.data.SharedSavedNews
 import com.example.tdm_project.data.news
@@ -55,33 +53,27 @@ class vertCardAdapter(val context: Context, val news : ArrayList<news>) : Recycl
               Picasso
                   .get() // give it the context
                   .load(item.Image)
-                  .resize(100,100)
                   .into(img)
 
-              btnShareProfile = objet.findViewById<AppCompatImageButton>(R.id.btn_share_profile)
-              btnShare = objet.findViewById<AppCompatImageButton>(R.id.btn_share)
-              btnSave = objet.findViewById<AppCompatImageButton>(R.id.btn_save)
-              btnShare.setOnClickListener {
-                 SharedSavedNews.sharePost(item,context)
-
+              val btnMenu = objet.findViewById<AppCompatImageButton>(R.id.menu_button)
+              btnMenu.setOnClickListener {
+                  showPopupMenu(btnMenu,item,context)
               }
 
-              btnShareProfile.setOnClickListener {
 
-                  SharedSavedNews.shareProfilePost(item,context)
-
-              }
-
-              btnSave.setOnClickListener {
-
-                  SharedSavedNews.savePost(item,context)
-
-              }
               objet.setOnClickListener {
                   SharedSavedNews.readArticle(item,context)
               }
 
           }
+        fun showPopupMenu(view: View, item: news , context: Context) {
+            // inflate menu
+            val popup = PopupMenu(view.context, view)
+            val inflater = popup.menuInflater
+            inflater.inflate(R.menu.card_menu, popup.menu)
+            popup.setOnMenuItemClickListener(CustomMenuItem(item,context))
+            popup.show()
+        }
 
 
     }

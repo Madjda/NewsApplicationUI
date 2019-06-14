@@ -2,10 +2,6 @@
 package com.example.tdm_project
 
 import android.annotation.SuppressLint
-import android.app.Activity
-import android.app.AlertDialog
-import android.content.Context
-import android.content.res.Configuration
 import android.os.Build
 import android.os.Bundle
 import android.support.annotation.RequiresApi
@@ -18,13 +14,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import com.example.tdm_project.adapters.horizCardAdapter
+import com.example.tdm_project.adapters.HorizCardAdapter
 import com.example.tdm_project.adapters.vertCardAdapter
 import com.example.tdm_project.data.Topic
 import com.example.tdm_project.data.getList
 import com.example.tdm_project.data.news
 import com.example.tdm_project.sharedPreferences.PreferencesProvider
-import java.util.*
 import kotlin.collections.ArrayList
 
 
@@ -33,7 +28,7 @@ import kotlin.collections.ArrayList
 
 class HomeFragment : Fragment() {
     lateinit var rootView : View
-    lateinit var customHAdapter : horizCardAdapter
+    lateinit var customHAdapter : HorizCardAdapter
     lateinit var customVAdapter : vertCardAdapter
     lateinit var rv : RecyclerView
     lateinit var pref : PreferencesProvider
@@ -110,7 +105,7 @@ class HomeFragment : Fragment() {
         val layout = LinearLayoutManager(rootView.context)
         layout.orientation = LinearLayoutManager.HORIZONTAL
         rv.layoutManager = layout
-        customHAdapter = horizCardAdapter(rootView.context,newsList)
+        customHAdapter = HorizCardAdapter(rootView.context,newsList)
         rv.adapter = customHAdapter
     }
 

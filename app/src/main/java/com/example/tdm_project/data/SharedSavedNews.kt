@@ -11,7 +11,7 @@ class SharedSavedNews {
 
     companion object {
 
-       var sharedPosts = arrayListOf<news>( news ("Le calendrier 2019/2020 de Premier League dévoilé - Foot Mercato","Footmercato.net","Le calendrier 2019/2020 de Premier League dévoilé - Foot Mercato",
+       var sharedPosts = arrayListOf<news>( news ("Le calendrier 2019/2020 de Premier League dévoilé - Foot Mercato","Footmercato.net","2019-12-04",
            "Sacré champion d’Angleterre pour la deuxième fois consécutive, Manchester City est prêt à repartir à la bataille. La Premier League vient de dévoiler le calendrier pour la saison 2019/2020. Et voici les dates principales.\nLes 20 clubs de Premier League (...)",
            "http://www.footmercato.net/premier-league/le-calendrier-2019-2020-de-premier-league-devoile_256383","http://www.footmercato.net/images/a/jurgen-klopp-et-pep-guardiola-lors-de-la-saison-2018-2019_256383.jpg","sport"))
 
@@ -41,7 +41,7 @@ class SharedSavedNews {
             else Toast.makeText(c, "news déja enregistré", Toast.LENGTH_SHORT).show()
         }
 
-        var savedPosts = arrayListOf<news>( news ("Le calendrier 2019/2020 de Premier League dévoilé - Foot Mercato","Footmercato.net","Le calendrier 2019/2020 de Premier League dévoilé - Foot Mercato",
+        var savedPosts = arrayListOf<news>( news ("Le calendrier 2019/2020 de Premier League dévoilé - Foot Mercato","Footmercato.net","2019-12-04",
             "Sacré champion d’Angleterre pour la deuxième fois consécutive, Manchester City est prêt à repartir à la bataille. La Premier League vient de dévoiler le calendrier pour la saison 2019/2020. Et voici les dates principales.\nLes 20 clubs de Premier League (...)",
             "http://www.footmercato.net/premier-league/le-calendrier-2019-2020-de-premier-league-devoile_256383","http://www.footmercato.net/images/a/jurgen-klopp-et-pep-guardiola-lors-de-la-saison-2018-2019_256383.jpg","sport"))
 

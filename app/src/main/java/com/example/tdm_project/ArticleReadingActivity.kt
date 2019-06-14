@@ -43,7 +43,7 @@ class ArticleReadingActivity : CustomBaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_article_reading)
         setSupportActionBar(toolbar)
-git        toolbar.setNavigationIcon(R.drawable.ic_keyboard_backspace_black_24dp)
+        toolbar.setNavigationIcon(R.drawable.ic_keyboard_backspace_black_24dp)
         toolbar.setNavigationOnClickListener{
             finish()
         }

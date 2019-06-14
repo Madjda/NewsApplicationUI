@@ -97,7 +97,7 @@ fun getList ( ) : ArrayList<news>{
     "https://o.aolcdn.com/images/dims?thumbnail=1200%2C630&quality=80&image_uri=https%3A%2F%2Fo.aolcdn.com%2Fimages%2Fdims%3Fresize%3D2000%252C2000%252Cshrink%26image_uri%3Dhttps%253A%252F%252Fs.yimg.com%252Fos%252Fcreatr-uploaded-images%252F2019-06%252Fcd2b2150-8d40-11e9-bdbb-e6bf52240aae%26client%3Da1acac3e1b3290917d92%26signature%3Dc1b84b063b786d5e6ae142541dee0877b4405223&client=amp-blogside-v2&signature=10d52f1a1e57524444c4c3e6c1fc46e44b070467",
     "tech"),
 
-    news ("Le calendrier 2019/2020 de Premier League dévoilé - Foot Mercato","Footmercato.net","Le calendrier 2019/2020 de Premier League dévoilé - Foot Mercato",
+    news ("Le calendrier 2019/2020 de Premier League dévoilé - Foot Mercato","Footmercato.net","2019-05-14T8:02:54Z",
         "Sacré champion d’Angleterre pour la deuxième fois consécutive, Manchester City est prêt à repartir à la bataille. La Premier League vient de dévoiler le calendrier pour la saison 2019/2020. Et voici les dates principales.\nLes 20 clubs de Premier League (...)",
         "http://www.footmercato.net/premier-league/le-calendrier-2019-2020-de-premier-league-devoile_256383","http://www.footmercato.net/images/a/jurgen-klopp-et-pep-guardiola-lors-de-la-saison-2018-2019_256383.jpg","sport")
     ))

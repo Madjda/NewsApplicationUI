@@ -12,6 +12,7 @@ import com.example.tdm_project.ArticleReadingActivity
 import com.example.tdm_project.R
 import com.example.tdm_project.data.news
 import com.example.tdm_project.sharedPreferences.WebBrowserActivity
+import com.squareup.picasso.Picasso
 
 class sharedPostsAdapter (val context: Context, val news : ArrayList<news>) : RecyclerView.Adapter<sharedPostsAdapter.ViewHolder> (){
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): ViewHolder {
@@ -40,7 +41,13 @@ class sharedPostsAdapter (val context: Context, val news : ArrayList<news>) : Re
             objet.findViewById<TextView>(R.id.news_date).text = item.Date + " By"
             objet.findViewById<TextView>(R.id.news_descrp).text = item.Second_title
             objet.findViewById<TextView>(R.id.news_writer).text = item.Writer
-            objet.findViewById<ImageView>(R.id.news_image)
+            val img =objet.findViewById<ImageView>(R.id.news_image)
+            Picasso
+                .get() // give it the context
+                .load(item.Image)
+                .into(img)
+
+
 
             val intent = Intent(context, WebBrowserActivity::class.java)
             objet.setOnClickListener {
