@@ -68,11 +68,7 @@ class horizCardAdapter(val context: Context , val news : ArrayList<news>) : Recy
               objet.setOnClickListener {
                   SharedSavedNews.readArticle(item,context)
               }
-            /*  val intent = Intent(context, ArticleReadingActivity::class.java)
-              objet.setOnClickListener {
-                  intent.putExtra("article",item)
-                  context.startActivity(intent)
-              }*/
+
 
 
 

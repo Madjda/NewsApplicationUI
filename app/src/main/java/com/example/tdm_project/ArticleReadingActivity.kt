@@ -2,13 +2,8 @@ package com.example.tdm_project
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
-import android.support.design.widget.Snackbar
-import android.support.v4.widget.ImageViewCompat
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.app.AppCompatViewInflater
 import android.support.v7.widget.AppCompatImageView
 import android.support.v7.widget.AppCompatTextView
 import android.view.View
@@ -20,7 +15,6 @@ import com.example.tdm_project.data.news
 import com.example.tdm_project.sharedPreferences.CustomBaseActivity
 import com.example.tdm_project.sharedPreferences.MyContextWrapper
 import com.example.tdm_project.sharedPreferences.PreferencesProvider
-
 import kotlinx.android.synthetic.main.activity_article_reading.*
 
 class ArticleReadingActivity : CustomBaseActivity() {
